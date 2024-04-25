@@ -6,7 +6,18 @@ from sklearn.metrics import accuracy_score, roc_auc_score
 from sklearn import metrics
 
 # Load the dataset from CSV
-data = pd.read_csv('Dataset/DataClass_Clean_GainRatio.csv')
+# #1 
+# data = pd.read_csv('Dataset/DataClass_Clean_GainRatio.csv')
+# #2 
+# data = pd.read_csv('Dataset/LongMethod_Clean_GainRatio.csv')
+# #3 
+# data = pd.read_csv('Dataset/FeatureEnvy_Clean_GainRatio.csv')
+# #4 
+# data = pd.read_csv('Dataset/LongParameterList_Clean_GainRatio.csv')
+# #5 
+# data = pd.read_csv('Dataset/GodClass_Clean_GainRatio.csv')
+# #6 
+data = pd.read_csv('Dataset/SwitchStatements_Clean_GainRatio.csv')
 
 # Assuming the last column is the target variable and the rest are features
 X = data.iloc[:, :-1]  # Features
