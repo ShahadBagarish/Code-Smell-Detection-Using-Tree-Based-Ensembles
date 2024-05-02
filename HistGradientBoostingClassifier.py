@@ -48,3 +48,18 @@ plt.title('Cross-Validation Accuracy and AUC Scores')
 plt.legend()
 plt.grid(True)
 plt.show()
+
+from scipy.stats import shapiro
+# Perform 10-fold cross-validation and collect predictions
+cv_predictions = cross_val_predict(hist_gradient_boosting_model, X, y, cv=10)
+
+# Perform Shapiro-Wilk test on the predictions
+stat, p= shapiro(cv_predictions)
+
+# Interpret the result
+alpha = 0.05
+is_normal = p > alpha
+if p > alpha:
+    print("normal")
+else:
+    print("Not normal")

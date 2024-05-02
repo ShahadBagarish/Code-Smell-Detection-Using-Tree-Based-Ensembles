@@ -17,7 +17,7 @@ from sklearn import metrics
 # #5 
 # data = pd.read_csv('Dataset/GodClass_Clean_GainRatio.csv')
 # #6 
-# data = pd.read_csv('Dataset/SwitchStatements_Clean_GainRatio.csv')
+data = pd.read_csv('Dataset/SwitchStatements_Clean_GainRatio.csv')
 
 # Assuming the last column is the target variable and the rest are features
 X = data.iloc[:, :-1]  # Features
@@ -48,3 +48,18 @@ plt.title('Cross-Validation Accuracy and AUC Scores')
 plt.legend()
 plt.grid(True)
 plt.show()
+
+from scipy.stats import shapiro
+# Perform 10-fold cross-validation and collect predictions
+cv_predictions = cross_val_predict(decision_tree_model, X, y, cv=10)
+
+# Perform Shapiro-Wilk test on the predictions
+stat, p= shapiro(cv_predictions)
+
+# Interpret the result
+alpha = 0.05
+is_normal = p > alpha
+if p > alpha:
+    print("normal")
+else:
+    print("Not normal")
